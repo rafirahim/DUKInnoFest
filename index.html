@@ -65,6 +65,13 @@ a{
   transform: scale(1.1);
     transition: transform .5s;
 }
+.reg
+{
+  width: 90%;
+  max-height: 100%;
+   
+  border: 0px solid #888888;
+}
 </style>
 <body>
 
@@ -124,20 +131,32 @@ a{
         </button>
       </div>
 <div class="container body_cont  ">
-  <br>
-  <p class="h2 text-center">About</p>
+  <div class="row">
+  <div class="col-sm-4 d-flex align-items-center justify-content-center">
+    <div class="reg text-center lead font-size-base">
+      <img src="/source/poster.png" class="card-img-top  " alt="...">
+     <p class="lead" id="notice"> </p>
 
-  <br>
- 
- <p class="lead" id="main"></p>  
- <div class="row" style="align-items: center;justify-content: center;">
-  
-  <div class="col-sm-4 text-center mt-2"> <a class="sih_link btn btn-outline-primary" href="https://sih.gov.in/letters/Guidelines-College-SPOC.pdf" target="_blank"> SIH Guidelines and Process flow  </a><br>
+    </div>
   </div>
-  <div class="col-sm-4 text-center mt-2">  <a class="sih_link btn btn-outline-primary" href="https://sih.gov.in/sih2022PS?technology_bucket=QWxs&category=QWxs&organization=QWxs&organization_type=OQ==" target="_blank">SIH Problem Statments</a>
+  <div class="col-sm-8"><br>
+    <p class="h2 text-center">About</p>
+  
+    <br>
+   
+   <p class="lead" id="main"></p> <div class="row" style="align-items: center;justify-content: center;">
+  
+    <div class="col-sm-5 text-center mt-2"> <a class="sih_link btn btn-outline-primary" href="https://sih.gov.in/letters/Guidelines-College-SPOC.pdf" target="_blank"> SIH Guidelines and Process flow  </a><br>
+    </div>
+    <div class="col-sm-5 text-center mt-2">  <a class="sih_link btn btn-outline-primary" href="https://sih.gov.in/sih2022PS?technology_bucket=QWxs&category=QWxs&organization=QWxs&organization_type=OQ==" target="_blank">SIH Problem Statments</a>
+    </div>
+     
+  </div> </div>
+   
   </div>
    
-</div>
+
+  
   
      
    
@@ -260,6 +279,8 @@ const url="https://docs.google.com/spreadsheets/d/194wb2Ezxi5Vq19_VJM81e88v-mTNc
 const main=document.getElementById("main");
 const main2_heading=document.getElementById("main2_heading");
 const main2=document.getElementById("main2");
+const notice=document.getElementById("notice");
+
 fetch(url).then(result=>result.text()).then(function(csvtext){
   return csv().fromString(csvtext);
 }).then(function(csv){
@@ -269,6 +290,7 @@ fetch(url).then(result=>result.text()).then(function(csvtext){
     main.innerHTML =csv[0].name+"</p>"
     main2_heading.innerHTML =csv[0].heading2
     main2.innerHTML =csv[0].heading2_content
+    notice.innerHTML =csv[0].notice
   // })
   
 })
